@@ -1,4 +1,4 @@
-import { SectionHeading } from "./SectionHeading";
+import { SectionHeading } from "./utility/SectionHeading";
 
 type Coach = {
     id: string;
@@ -33,7 +33,7 @@ export function CoachesSection() {
 
                         {/* Image placeholder - trying to match the vector style from the input would require specific assets, using a gradient placeholder for now if no asset */}
                         <div className="h-[320px] w-full bg-gray-500/20 mix-blend-overlay">
-                        <img src={coach.image} alt={coach.name} className="h-full w-full object-cover" />
+                            <img src={coach.image} alt={coach.name} className="h-full w-full object-cover" />
                         </div>
 
                         <div className="absolute bottom-0 left-0 right-0 p-6 pt-20 bg-gradient-to-t from-black via-black/80 to-transparent">

@@ -1,4 +1,4 @@
-import { SectionHeading } from "./SectionHeading";
+import { SectionHeading } from "./utility/SectionHeading";
 
 type Player = {
   id: string;

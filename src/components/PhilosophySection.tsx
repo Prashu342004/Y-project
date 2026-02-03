@@ -1,10 +1,10 @@
-import { SectionHeading } from "./SectionHeading";
+import { SectionHeading } from "./utility/SectionHeading";
 
 export function PhilosophySection() {
   return (
     <section className="py-8">
       <SectionHeading title="Our Philosophy" />
-      
+
       <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
         <p className="text-[15px] leading-relaxed text-white/80 md:text-lg">
           Founded on the principles of <span className="text-[#F5C84B] font-bold">excellence</span> and <span className="text-[#F5C84B] font-bold">discipline</span>, our academy is more than a training ground. We nurture the next generation of football stars through a curriculum that balances technical skill with tactical intelligence.

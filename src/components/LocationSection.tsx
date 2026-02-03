@@ -1,4 +1,4 @@
-import { SectionHeading } from "./SectionHeading";
+import { SectionHeading } from "./utility/SectionHeading";
 export function LocationSection() {
     return (
         <section className="py-8">

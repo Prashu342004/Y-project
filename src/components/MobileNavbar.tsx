@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { cn } from "../lib/cn";
-import { IconMenu, IconSearch, Profile } from "./Icon";
+import { Profile } from "./Icon";
 
 export function MobileNavbar() {
   return (
