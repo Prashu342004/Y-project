@@ -5,8 +5,10 @@ class Player(models.Model):
     name = models.CharField(max_length=100)
     position = models.CharField(max_length=50)
     jersey_no = models.IntegerField()
-    mobile_no = models.CharField(max_length=20, blank=True)
+    mobile_no = models.CharField(max_length=20, blank=True) # integer field
     email = models.EmailField(blank=True)
+    def __str__(self):
+        return self.name
 
 class Match(models.Model):
     club_name = models.CharField(max_length=100)
@@ -18,4 +20,6 @@ class Attendance(models.Model):
     percentage = models.DecimalField(max_digits=5, decimal_places=2)
     date_present = models.JSONField(default=list)
     date_absent = models.JSONField(default=list)
-    fee_status = models.CharField(max_length=50)
+    fee_status = models.BooleanField(default=True) # could be boolean
+    def __str__(self):
+        return self.player.name + " attendance"

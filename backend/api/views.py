@@ -23,3 +23,8 @@ def profile(request):
         'attendence_data': {'percentage': float(a.percentage) if a else 0, 'date_of_present': a.date_present if a else [], 'date_of_absent': a.date_absent if a else [], 'fee_status': a.fee_status if a else ''},
         'contact_info': {'mobile_no': p.mobile_no, 'email': p.email}
     })
+
+@api_view(['POST'])
+def attendance(request):
+    
+    return Response({'success': True}, status=200)
