@@ -5,13 +5,13 @@ import { Button } from "../components/utility/Button";
 export function AboutPage() {
     return (
         <div className="min-h-screen pt-24">
-                <PhilosophySection />
-                <CoachesSection />
-                <LocationSection />
+            <PhilosophySection />
+            <CoachesSection />
+            <LocationSection />
 
-                <div className="my-4">
-                    <Button label="Join academy" />
-                </div>
+            <div className="my-4">
+                <Button label="Join academy" />
+            </div>
         </div>
     );
 }
