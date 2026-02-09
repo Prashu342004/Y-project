@@ -6,14 +6,16 @@ import { useFetch } from "../lib/fetch";
 
 export function HomePage() {
   const { data, error } = useFetch("");
-  
   console.log({ data, error });
+  const MatchDetails = data?.upcoming_matches;
+
+  
 
   return (
     <div className="min-h-screen">
       <Hero />
       <ImageCarousel />
-      <UpcomingMatch />
+      <UpcomingMatch MatchDetails={MatchDetails} />
       <PlayersSection />
     </div>
   );

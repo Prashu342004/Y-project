@@ -3,8 +3,8 @@ import { IconCheck } from "./utility/Icon";
 export function ProfileHero({ PlayerDetails }: { PlayerDetails: any }) {
 
     return (
-        <div className="relative pt-20 pb-6">
-            <div className="mx-auto max-w-lg">
+        <div className="pt-20 pb-6">
+            <div className="relative mx-auto w-full max-w-[520px]">
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
                     <img
                         src={PlayerDetails?.photo} alt={PlayerDetails?.name}

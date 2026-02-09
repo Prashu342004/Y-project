@@ -2,7 +2,7 @@ import { IconPhone, IconMail, } from "./utility/Icon";
 
 export function ContactSection({ ContactDetails }: { ContactDetails: any }) {
     return (
-        <section className="py-6">
+        <section className="order-3 sm:order-2 py-2">
             <div className="mx-auto max-w-lg">
                 <div className="rounded-[2rem] border border-white/5 bg-[#121418] p-6 shadow-lg">
                     <h3 className="mb-6 text-[10px] font-bold uppercase tracking-wider text-[#f5c84b]">
