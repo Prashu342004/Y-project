@@ -5,13 +5,16 @@ import { useFetch } from "../lib/fetch";
 
 export function ProfilePage() {
 const {data, error} = useFetch('/profile')
-console.log(data);
+const PlayerDetails = data?.players_detail
+const ContactDetails = data?.contact_info
+const AttendenceDetails = data?.attendence_data
 
     return (
         <div className="min-h-screen">
-            <ProfileHero />
-            <StatsSection />
-            <ContactSection />
+            <ProfileHero PlayerDetails={PlayerDetails} />
+            <StatsSection AttendenceDetails={AttendenceDetails} />
+            <ContactSection ContactDetails={ContactDetails} />
         </div>
     );
 }
+  

@@ -1,4 +1,4 @@
-import { IconInstagram } from "./Icon";
+import { IconInstagram } from "./utility/Icon";
 
 export function Footer() {
   return (

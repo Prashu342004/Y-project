@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { cn } from "../lib/cn";
-import { Profile } from "./Icon";
+import { Profile } from "./utility/Icon";
 
 export function MobileNavbar() {
   return (
@@ -20,32 +20,30 @@ export function MobileNavbar() {
           </div>
           <div className="flex gap-1 xs:gap-4 ">
             <NavLink to="/" className={({ isActive }) =>
-    `w-fit place-items-center rounded-3xl p-2 sm:p-4 border text-[13px] font-extrabold tracking-[.6px]
+              `w-fit place-items-center rounded-3xl p-2 sm:p-4 border text-[13px] font-extrabold tracking-[.6px]
      shadow-[0_14px_40px_rgba(245,200,75,.10)] transition
-     ${
-       isActive
-         ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white"
-         : "bg-white/10 text-white border-black/25 hover:bg-white/20"
-     }`
-  }>
+     ${isActive
+                ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white"
+                : "bg-white/10 text-white border-black/25 hover:bg-white/20"
+              }`
+            }>
               HOME
             </NavLink>
             <NavLink to="/about" className={({ isActive }) =>
-    `w-fit place-items-center rounded-3xl p-2 sm:p-4 border text-[13px] font-extrabold tracking-[.6px]
+              `w-fit place-items-center rounded-3xl p-2 sm:p-4 border text-[13px] font-extrabold tracking-[.6px]
      shadow-[0_14px_40px_rgba(245,200,75,.10)] transition
-     ${
-       isActive
-         ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white"
-         : "bg-white/10 text-white border-black/25 hover:bg-white/20"
-     }`
-  }>
+     ${isActive
+                ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white"
+                : "bg-white/10 text-white border-black/25 hover:bg-white/20"
+              }`
+            }>
               ABOUT US
             </NavLink>
           </div>
-          <NavLink to="/profile" className={({ isActive }) => isActive ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white rounded-full p-1": "bg-white/10 text-white border border-black/25 rounded-full p-1"}>
+          <NavLink to="/profile" className={({ isActive }) => isActive ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white rounded-full p-1" : "bg-white/10 text-white border border-black/25 rounded-full p-1"}>
 
-               <Profile className="size-8" />
- 
+            <Profile className="size-8" />
+
           </NavLink>
 
         </div>

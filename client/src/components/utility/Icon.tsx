@@ -183,7 +183,7 @@ export function IconMapPin({ className, title = "Location" }: IconProps) {
       className={className}
       fill="none"
     >
-      <path
+    <path
         d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
         stroke="currentColor"
         strokeWidth="2"
@@ -203,3 +203,22 @@ export function IconMapPin({ className, title = "Location" }: IconProps) {
   );
 }
 
+export function IconViewAll({ className, title = "View All" }: IconProps) {
+  return (
+    <svg 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    stroke-width="1.5" 
+    stroke="currentColor"   
+    aria-label={title}
+    className={className}>
+    <path 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+    />
+</svg>
+
+  );
+}
