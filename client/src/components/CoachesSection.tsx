@@ -11,10 +11,10 @@ type Coach = {
 const coaches: Coach[] = [
     {
         id: "c1",
-        name: "Coach Marcus",
+        name: "Gautam",
         role: "Head Coach",
-        desc: "UEFA Pro License • 12 years at Academy",
-        image: "https://generated.vusercontent.net/placeholder-user.jpg", // We will likely verify this visual later
+        desc: "D License • 2 years at Academy",
+        image: "src\\assets\\gautam.jpeg", // We will likely verify this visual later
     }
 ];
 
@@ -32,7 +32,7 @@ export function CoachesSection() {
                         <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-black/80"></div>
 
                         {/* Image placeholder - trying to match the vector style from the input would require specific assets, using a gradient placeholder for now if no asset */}
-                        <div className="h-[320px] w-full bg-gray-500/20 mix-blend-overlay">
+                        <div className="h-[320px] w-full bg-gray-500/20 ">
                             <img src={coach.image} alt={coach.name} className="h-full w-full object-cover" />
                         </div>
 
