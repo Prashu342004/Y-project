@@ -12,12 +12,12 @@ export function PhilosophySection() {
 
         <div className="mt-8 grid grid-cols-2 gap-4">
           <div className="rounded-2xl bg-white/5 p-5">
-            <div className="text-3xl font-extrabold text-[#F5C84B]">15+</div>
+            <div className="text-3xl font-extrabold text-[#F5C84B]">2+</div>
             <div className="mt-1 text-[11px] font-bold tracking-wider text-white/60 uppercase">Years Experience</div>
           </div>
           <div className="rounded-2xl bg-white/5 p-5">
-            <div className="text-3xl font-extrabold text-[#F5C84B]">500+</div>
-            <div className="mt-1 text-[11px] font-bold tracking-wider text-white/60 uppercase">Elite Graduates</div>
+            <div className="text-3xl font-extrabold text-[#F5C84B]">50+</div>
+            <div className="mt-1 text-[11px] font-bold tracking-wider text-white/60 uppercase">Players Trained</div>
           </div>
         </div>
       </div>
