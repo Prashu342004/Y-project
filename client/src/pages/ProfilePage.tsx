@@ -6,15 +6,18 @@ import AttendencTable from "../components/AttendencTable";
 import { useState, } from "react";
 
 export function ProfilePage() {
-    const { data, } = useFetch('/profile')
-    const PlayerDetails = data?.players_detail
-    const ContactDetails = data?.contact_info
-    const AttendenceDetails = data?.attendence_data
-    const [isVisible, setIsVisible] = useState(false)
+  const { data } = useFetch('/profile');
 
-    function isTableVisible(isVisible: boolean) {
-        setIsVisible(isVisible)
-    }
+  const PlayerDetails = data?.players_detail;
+  const ContactDetails = data?.contact_info;
+  const AttendenceDetails = data?.attendence_data;
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  function isTableVisible(isVisible: boolean) {
+    setIsVisible(isVisible);
+  }
+
 
     return (
 
