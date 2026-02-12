@@ -96,7 +96,7 @@ nest-asyncio==1.6.0
 notebook_shim==0.2.4
 npm==0.1.1
 numpy==2.2.6
-onnxruntime==1.23.2
+onnxruntime==1.24.1
 openai==2.14.0
 optional-django==0.1.0
 orjson==3.11.5
@@ -178,4 +178,5 @@ xxhash==3.6.0
 yacman==0.9.4
 yarl==1.22.0
 zstandard==0.25.0
+
 
