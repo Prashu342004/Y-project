@@ -6,7 +6,7 @@ import AttendencTable from "../components/AttendencTable";
 import { useState, } from "react";
 
 export function ProfilePage() {
-    const { data, error } = useFetch('/profile')
+    const { data, } = useFetch('/profile')
     const PlayerDetails = data?.players_detail
     const ContactDetails = data?.contact_info
     const AttendenceDetails = data?.attendence_data
