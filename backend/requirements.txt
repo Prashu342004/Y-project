@@ -19,7 +19,6 @@ certifi==2025.11.12
 cffi==2.0.0
 charset-normalizer==3.4.4
 click==8.3.1
-colorama==0.4.6
 coloredlogs==15.0.1
 comm==0.2.3
 dataclasses-json==0.6.7
@@ -132,7 +131,6 @@ python-dateutil==2.9.0.post0
 python-dotenv==1.2.1
 python-json-logger==4.0.0
 pytz==2025.2
-pywinpty==3.0.2
 PyYAML==6.0.3
 pyzmq==27.1.0
 referencing==0.37.0
@@ -178,5 +176,6 @@ xxhash==3.6.0
 yacman==0.9.4
 yarl==1.22.0
 zstandard==0.25.0
+
 
 
