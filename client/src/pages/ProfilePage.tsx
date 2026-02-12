@@ -3,7 +3,7 @@ import { StatsSection } from "../components/StatsSection";
 import { ContactSection } from "../components/ContactSection";
 import { useFetch } from "../lib/fetch";
 import AttendencTable from "../components/AttendencTable";
-import { useState, useEffect } from "react";
+import { useState, } from "react";
 
 export function ProfilePage() {
     const { data, error } = useFetch('/profile')
