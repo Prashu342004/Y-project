@@ -2,8 +2,8 @@ import { ProfileHero } from "../components/ProfileHero";
 import { StatsSection } from "../components/StatsSection";
 import { ContactSection } from "../components/ContactSection";
 import { useFetch } from "../lib/fetch";
-import AttendencTable from "../components/AttendencTable";
-import { useState, } from "react";
+import AttendenceTable from "../components/AttendenceTable";
+import { useState } from "react";
 
 export function ProfilePage() {
   const { data } = useFetch('/profile');
@@ -14,20 +14,23 @@ export function ProfilePage() {
 
   const [isVisible, setIsVisible] = useState(false);
 
-  function isTableVisible(isVisible: boolean) {
-    setIsVisible(isVisible);
+  function isTableVisible(value: boolean) {
+    setIsVisible(value);
   }
 
-
-    return (
-
-        <div className="min-h-screen">
-            <ProfileHero PlayerDetails={PlayerDetails} />
-            <div className="bg-black/20 mx-auto w-full rounded-2xl flex flex-col sm:flex-row sm:gap-4 sm:justify-center sm:flex-wrap">
-                <StatsSection AttendenceDetails={AttendenceDetails} TableVisibility={isTableVisible} />
-                <ContactSection ContactDetails={ContactDetails} />
-                {isVisible && <AttendencTable AttendanceDetails={AttendenceDetails} />}
-            </div>
-        </div>
-    );
+  return (
+    <div className="min-h-screen">
+      <ProfileHero PlayerDetails={PlayerDetails} />
+      <div className="bg-black/20 mx-auto w-full rounded-2xl flex flex-col sm:flex-row sm:gap-4 sm:justify-center sm:flex-wrap">
+        <StatsSection
+          AttendenceDetails={AttendenceDetails}
+          TableVisibility={isTableVisible}
+        />
+        <ContactSection ContactDetails={ContactDetails} />
+        {isVisible && (
+          <AttendenceTable AttendenceDetails={AttendenceDetails} />
+        )}
+      </div>
+    </div>
+  );
 }
