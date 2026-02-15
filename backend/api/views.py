@@ -1,13 +1,26 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Player, Match, Attendance
+from .models import Player, Match, Attendance, User
 
-@api_view(['GET'])
+
+
+@api_view(['GET', 'POST'])
 def home(request):
-    players = list(Player.objects.values('photo', 'name', 'position', 'jersey_no'))
-    m = Match.objects.first()
-    upcoming = {'club_name': m.club_name if m else '', 'time_date': m.time_date.isoformat() if m else None, 'location': m.location if m else ''}
-    return Response({'players_detail': players, 'upcoming_matches': upcoming})
+    if request.method == 'POST':
+        print('this is post method on /')
+        user = User.objects.create(
+           email = request.data.get('email'),
+           password = request.data.get('password')
+       )
+        return Response({user})
+
+    if request.method == 'GET':
+        print('this is get method on /')
+        players = list(Player.objects.values('photo', 'name', 'position', 'jersey_no',))
+        m = Match.objects.first()
+        upcoming = {'club_name': m.club_name if m else '', 'time_date': m.time_date.isoformat() if m else None, 'location': m.location if m else ''}
+        return Response({'players_detail': players, 'upcoming_matches': upcoming})
+
 
 @api_view(['GET'])
 def profile(request):
@@ -27,4 +40,10 @@ def profile(request):
 @api_view(['POST'])
 def attendance(request):
     
+    return Response({'success': True}, status=200)
+
+@api_view(['POST']) #check email and password are in DB
+def login(request):
+    email = request.data.get('email')
+    password = request.data.get('password')
     return Response({'success': True}, status=200)

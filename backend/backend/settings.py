@@ -7,7 +7,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
     'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles',
-    'rest_framework', 'corsheaders', 'api',
+    'rest_framework', 'corsheaders', 'api.apps.ApiConfig'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -31,7 +31,7 @@ DATABASES = {
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'), 
-        'PORT': '5432',
+        'PORT': config('DB_PORT'),
           'OPTIONS': {
             'sslmode': 'require',
         }
