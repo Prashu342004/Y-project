@@ -1,5 +1,5 @@
 
-export default function AttendencTable({ AttendanceDetails }: { AttendanceDetails: any }) {
+export function AttendanceTable({ AttendanceDetails }: { AttendanceDetails: any }) {
     let DateOfAbsent = AttendanceDetails?.date_of_absent
     let DateOfPresent = AttendanceDetails?.date_of_present
     let NonRepeatingTotalWorkingDays: any[] = []

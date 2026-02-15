@@ -2,7 +2,7 @@ import { ProfileHero } from "../components/ProfileHero";
 import { StatsSection } from "../components/StatsSection";
 import { ContactSection } from "../components/ContactSection";
 import { useFetch } from "../lib/fetch";
-import AttendenceTable from "../components/AttendenceTable";
+import { AttendanceTable } from "../components/AttendanceTable";
 import { useState } from "react";
 
 export function ProfilePage() {
@@ -28,7 +28,7 @@ export function ProfilePage() {
         />
         <ContactSection ContactDetails={ContactDetails} />
         {isVisible && (
-          <AttendenceTable AttendenceDetails={AttendenceDetails} />
+          <AttendanceTable AttendenceDetails={AttendenceDetails} />
         )}
       </div>
     </div>

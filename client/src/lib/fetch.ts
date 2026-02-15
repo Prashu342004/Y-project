@@ -1,4 +1,4 @@
-import axios from "axios";
+import { api } from "./axiosInstance";
 import { useEffect, useState } from "react";
 
 export const useFetch = (slug: string) => {
@@ -6,7 +6,7 @@ export const useFetch = (slug: string) => {
   const [error, setError] = useState<any>(null);
 
   useEffect(() => {
-    axios.get(`https://y-project-yyer.onrender.com${slug}`)
+    api.get(`${slug}`)
       .then(res => {
         setData(res.data);
       })

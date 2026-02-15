@@ -1,7 +1,22 @@
-import { Link } from "react-router-dom";
 import { IconMail, IconLock } from "../components/utility/Icon";
+import { useState } from "react";
+import { api } from "../lib/axiosInstance";
+import { useNavigate } from "react-router-dom";
+
 
 export function LoginPage() {
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  function submitForm(e: React.SubmitEvent) {
+    e.preventDefault();
+    
+    api.post("/auth/login",{email,password})
+    .then((res) => { if(res.data.success){navigate("/profile")}})
+    .catch(err => console.log(err))
+  }
   return (
     <div className="flex min-h-[80vh] items-center justify-center px-4 py-12">
       <div className="w-full max-w-md rounded-[2.5rem] border border-white/10 bg-[#121418]/60 p-8 shadow-2xl backdrop-blur-2xl sm:p-10">
@@ -14,7 +29,8 @@ export function LoginPage() {
           </h1>
         </div>
 
-        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-6" onSubmit={submitForm}>
+
           <div className="space-y-2">
             <label className="text-xs font-semibold uppercase tracking-wider text-white/50 ml-1">
               Email Address
@@ -27,6 +43,9 @@ export function LoginPage() {
                 type="email"
                 placeholder="name@example.com"
                 className="w-full rounded-2xl border border-white/5 bg-white/5 py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 focus:border-[#f5c84b]/50 focus:outline-none focus:ring-1 focus:ring-[#f5c84b]/50 transition-all"
+                onChange={
+                  (e) => setEmail(e.target.value)
+                }
                 required
               />
             </div>
@@ -38,7 +57,7 @@ export function LoginPage() {
                 Password
               </label>
               <a href="#" className="text-[11px] font-bold text-[#f5c84b] hover:opacity-80 transition-opacity">
-                Forgot?
+                Forgot Password?
               </a>
             </div>
             <div className="relative">
@@ -49,30 +68,18 @@ export function LoginPage() {
                 type="password"
                 placeholder="••••••••"
                 className="w-full rounded-2xl border border-white/5 bg-white/5 py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 focus:border-[#f5c84b]/50 focus:outline-none focus:ring-1 focus:ring-[#f5c84b]/50 transition-all"
+                onChange={
+                  (e) => setPassword(e.target.value)
+                }
                 required
               />
             </div>
           </div>
+          <button className="inline-flex w-[200px] sm:max-w-[350px] h-[40px] items-center justify-center rounded-2xl border border-black/25 bg-[radial-gradient(130%_130%_at_20%_10%,#FFE39B,#F5C84B_55%,#D9A400_120%)] px-4 py-3.5 text-[14px] font-extrabold text-black transition active:scale-[0.99]"
+         type="submit">Login</button>
 
-          <button
-            type="submit"
-            className="group relative flex w-full items-center justify-center overflow-hidden rounded-2xl bg-gold-gradient py-4 text-sm font-extrabold text-black transition-all hover:shadow-[0_0_20px_rgba(245,200,75,0.3)] active:scale-[0.98]"
-          >
-            <span>Login to Dashboard</span>
-          </button>
         </form>
 
-        <div className="mt-10 text-center">
-          <p className="text-sm text-white/40">
-            Don't have an account?{" "}
-            <Link
-              to="/signup"
-              className="font-bold text-[#f5c84b] hover:underline underline-offset-4 decoration-2"
-            >
-              Sign up now
-            </Link>
-          </p>
-        </div>
       </div>
     </div>
   );

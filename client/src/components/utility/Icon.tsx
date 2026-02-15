@@ -89,10 +89,10 @@ export function Profile({ className, title = "Profile" }: IconProps) {
       stroke="currentColor"
       aria-label={title}
       className={className}>
-    <path
+      <path
         stroke-linecap="round"
         stroke-linejoin="round"
-        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" 
+        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
       />
     </svg>
 
@@ -183,7 +183,7 @@ export function IconMapPin({ className, title = "Location" }: IconProps) {
       className={className}
       fill="none"
     >
-    <path
+      <path
         d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
         stroke="currentColor"
         strokeWidth="2"
@@ -205,20 +205,60 @@ export function IconMapPin({ className, title = "Location" }: IconProps) {
 
 export function IconViewAll({ className, title = "View All" }: IconProps) {
   return (
-    <svg 
-    fill="none" 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 24 24" 
-    stroke-width="1.5" 
-    stroke="currentColor"   
-    aria-label={title}
-    className={className}>
-    <path 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
-    />
-</svg>
+    <svg
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      aria-label={title}
+      className={className}>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+      />
+    </svg>
+
+  );
+}
+
+export function IconLock({ className, title = "Lock" }: IconProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor"
+      className={className}
+      aria-label={title}>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 
+  11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 
+  2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 
+  2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+    </svg>
+
+  );
+}
+
+export function IconHamburger({ className, title = "Hamburger" }: IconProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      className={className}
+      arial-label={title}>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    </svg>
+
 
   );
 }

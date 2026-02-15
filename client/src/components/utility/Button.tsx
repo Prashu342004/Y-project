@@ -1,4 +1,4 @@
-export function Button(props: { label: string }) {
+export function Button(props: { label: string, onClick: () => void }) {
     return (
         <a
             href="#"
@@ -8,3 +8,4 @@ export function Button(props: { label: string }) {
         </a>
     )
 }
+
