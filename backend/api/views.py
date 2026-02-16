@@ -1,4 +1,5 @@
 from rest_framework.decorators import api_view
+from django.contrib.auth.hashers import check_password
 from rest_framework.response import Response
 from .models import Player, Match, Attendance, User
 
@@ -6,13 +7,7 @@ from .models import Player, Match, Attendance, User
 
 @api_view(['GET', 'POST'])
 def home(request):
-    if request.method == 'POST':
-        print('this is post method on /')
-        user = User.objects.create(
-           email = request.data.get('email'),
-           password = request.data.get('password')
-       )
-        return Response({user})
+
 
     if request.method == 'GET':
         print('this is get method on /')
@@ -37,13 +32,16 @@ def profile(request):
         'contact_info': {'mobile_no': p.mobile_no, 'email': p.email}
     })
 
-@api_view(['POST'])
-def attendance(request):
-    
-    return Response({'success': True}, status=200)
 
 @api_view(['POST']) #check email and password are in DB
 def login(request):
     email = request.data.get('email')
     password = request.data.get('password')
-    return Response({'success': True}, status=200)
+    try:
+        player = User.objects.get(email=email)
+        if check_password(password, player.password):
+            return Response({'success': True}, status=200)
+        else:
+            return Response({'error': 'Invalid email or password'}, status=401)
+    except User.DoesNotExist:
+        return Response({'error': 'Invalid email or password'}, status=401)
