@@ -6,11 +6,11 @@ import { AttendanceTable } from "../components/AttendanceTable";
 import { useState } from "react";
 
 export function ProfilePage() {
-  const { data } = useFetch('/profile');
-
+  const { data, error } = useFetch('/profile','get');
+  
   const PlayerDetails = data?.players_detail;
   const ContactDetails = data?.contact_info;
-  const AttendenceDetails = data?.attendence_data;
+  const AttendanceDetails = data?.attendence_data;
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -18,17 +18,25 @@ export function ProfilePage() {
     setIsVisible(value);
   }
 
+  if (error) {
+    return <div className="min-h-screen flex items-center justify-center text-white bg-black/40">Not the Member of YBFC</div>;
+  }
+
+  if (!data) {
+    return <div className="min-h-screen flex items-center justify-center text-white bg-black/40">Loading...</div>;
+  }
+
   return (
     <div className="min-h-screen">
       <ProfileHero PlayerDetails={PlayerDetails} />
       <div className="bg-black/20 mx-auto w-full rounded-2xl flex flex-col sm:flex-row sm:gap-4 sm:justify-center sm:flex-wrap">
         <StatsSection
-          AttendenceDetails={AttendenceDetails}
+          AttendanceDetails={AttendanceDetails}
           TableVisibility={isTableVisible}
         />
         <ContactSection ContactDetails={ContactDetails} />
         {isVisible && (
-          <AttendanceTable AttendenceDetails={AttendenceDetails} />
+          <AttendanceTable AttendanceDetails={AttendanceDetails} />
         )}
       </div>
     </div>

@@ -15,7 +15,7 @@ def create_user(sender,instance, created, **kwargs):
     if 'migrate' in sys.argv:
         return
 
-    generated_password = str(instance.jersey_no) + "_"+ instance.email + "_"+ instance.mobile_no
+    generated_password = str(instance.jersey_no) + "@"+ instance.email + "@"+ instance.mobile_no
 
     print(generated_password)
     print(type(generated_password))

@@ -24,10 +24,17 @@ class Attendance(models.Model):
     def __str__(self):
         return self.player.name + " attendance"
 
-
 class User(models.Model):
     player = models.OneToOneField(Player, on_delete=models.CASCADE ,null=True, blank=True)
     email = models.EmailField(blank=True)
     password = models.CharField(max_length=100)
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
     def __str__(self):
         return self.email

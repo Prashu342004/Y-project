@@ -3,5 +3,5 @@ from .models import Player, Match, Attendance, User
 admin.site.register(Player)
 admin.site.register(Match)
 admin.site.register(Attendance)  
-admin.site.register(User)  
-  
+admin.site.register(User)   
+
