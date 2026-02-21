@@ -10,9 +10,9 @@ INSTALLED_APPS = [
     'rest_framework', 'corsheaders', 'api.apps.ApiConfig', 'rest_framework_simplejwt'
 ]
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -60,4 +60,9 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://youngboys.vercel.app",
+    "https://y-project-git-main-shubhs-projects-72744d08.vercel.app",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://youngboys.vercel.app",
+    "https://y-project-git-main-shubhs-projects-72744d08.vercel.app",
 ]
