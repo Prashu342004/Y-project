@@ -10,7 +10,7 @@ export function AboutPage() {
             <LocationSection />
 
             <div className="my-4">
-                <Button onClick={() => {}} label="Join academy" />
+                <Button onClick={() => { }} label="Join academy" />
             </div>
         </div>
     );

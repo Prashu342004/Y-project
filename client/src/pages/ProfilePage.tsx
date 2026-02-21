@@ -10,7 +10,7 @@ export function ProfilePage() {
   
   const PlayerDetails = data?.players_detail;
   const ContactDetails = data?.contact_info;
-  const AttendanceDetails = data?.attendence_data;
+  const AttendanceDetails = data?.attendance_data;
 
   const [isVisible, setIsVisible] = useState(false);
 
