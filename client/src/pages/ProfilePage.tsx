@@ -6,8 +6,8 @@ import { AttendanceTable } from "../components/AttendanceTable";
 import { useState } from "react";
 
 export function ProfilePage() {
-  const { data } = useFetch('/profile');
-
+  const { data, error } = useFetch('/profile','get');
+  
   const PlayerDetails = data?.players_detail;
   const ContactDetails = data?.contact_info;
   const AttendanceDetails = data?.attendance_data;
@@ -16,6 +16,14 @@ export function ProfilePage() {
 
   function isTableVisible(value: boolean) {
     setIsVisible(value);
+  }
+
+  if (error) {
+    return <div className="min-h-screen flex items-center justify-center text-white bg-black/40">Not the Member of YBFC</div>;
+  }
+
+  if (!data) {
+    return <div className="min-h-screen flex items-center justify-center text-white bg-black/40">Loading...</div>;
   }
 
   return (

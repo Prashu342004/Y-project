@@ -8,14 +8,27 @@ export function LoginPage() {
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   function submitForm(e: React.SubmitEvent) {
     e.preventDefault();
+    setError(false);
     
-    api.post("/auth/login",{email,password})
-    .then((res) => { if(res.data.success){navigate("/profile")}})
-    .catch(err => console.log(err))
+    api.post("/auth/login", { email, password })
+    .then((res) => {
+      console.log("Login response:", res.data);
+      if (res.data.success) {
+        navigate("/profile");
+      } else {
+        setError(true);
+      }
+    })
+    .catch(err => {
+      console.error("Login error details:", err);
+      setError(true);
+    });
+
   }
   return (
     <div className="flex min-h-[80vh] items-center justify-center px-4 py-12">
@@ -30,6 +43,7 @@ export function LoginPage() {
         </div>
 
         <form className="space-y-6" onSubmit={submitForm}>
+          {error && <div className="text-red-500">Wrong Email or Password</div>}
 
           <div className="space-y-2">
             <label className="text-xs font-semibold uppercase tracking-wider text-white/50 ml-1">

@@ -25,8 +25,9 @@ export function MobileNavbar() {
 
           {/* Desktop Links (Hidden on mobile) */}
           <div className="hidden sm:flex gap-4 items-center w-full justify-between">
+            <div>
             <NavLink to="/about" className={({ isActive }) =>
-              `order-2 w-fit px-6 py-2.5 rounded-2xl border text-[13px] font-extrabold tracking-[1px] transition uppercase
+              `w-fit px-6 py-2.5 rounded-2xl border text-[13px] font-extrabold tracking-[1px] transition uppercase
      ${isActive
                 ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white"
                 : "bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white"
@@ -35,15 +36,15 @@ export function MobileNavbar() {
               About Us
             </NavLink>
             <NavLink to="/login" className={({ isActive }) =>
-              `order-3 w-fit px-6 py-2.5 rounded-2xl border text-[13px] font-extrabold tracking-[1px] transition uppercase
-     ${isActive
-                ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white"
+              `m-1 w-fit px-6 py-2.5 rounded-2xl border text-[13px] font-extrabold tracking-[1px] transition uppercase
+              ${isActive ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white"
                 : "bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white"
               }`
             }>
               Login
             </NavLink>
-            <NavLink to="/profile" className={({ isActive }) => cn('ml-auto order-1 ', isActive ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white rounded-full p-1 transition" : "bg-white/10 text-white border border-black/25 rounded-full p-1 transition hover:bg-white/20")}>
+            </div>
+            <NavLink to="/profile" className={({ isActive }) => isActive ? "bg-[radial-gradient(120%_120%_at_20%_20%,#FFE08B,#F5C84B_45%,#9A6C00_110%)] text-black border-white rounded-full p-1 transition" : "bg-white/10 text-white border border-black/25 rounded-full p-1 transition hover:bg-white/20"}>
               <Profile className="size-8" />
             </NavLink>
           </div>
@@ -68,6 +69,16 @@ export function MobileNavbar() {
           )}
         >
           <div className="flex flex-col gap-2 p-3 rounded-2xl border border-white/10 bg-black/60 backdrop-blur-2xl shadow-2xl">
+             <NavLink
+              to="/profile"
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) => cn(
+                "w-full p-4 rounded-xl text-center text-[13px] font-extrabold tracking-[1px] uppercase transition",
+                isActive ? "bg-[#F5C84B] text-black" : "bg-white/5 text-white hover:bg-white/10"
+              )}
+            >
+              Profile
+            </NavLink>
             <NavLink
               to="/about"
               onClick={() => setIsOpen(false)}
@@ -88,16 +99,7 @@ export function MobileNavbar() {
             >
               Login
             </NavLink>
-            <NavLink
-              to="/profile"
-              onClick={() => setIsOpen(false)}
-              className={({ isActive }) => cn(
-                "w-full p-4 rounded-xl text-center text-[13px] font-extrabold tracking-[1px] uppercase transition",
-                isActive ? "bg-[#F5C84B] text-black" : "bg-white/5 text-white hover:bg-white/10"
-              )}
-            >
-              Profile
-            </NavLink>
+           
           </div>
         </div>
       </div>

@@ -4,9 +4,9 @@ import { IconViewAll } from "./utility/Icon";
 export function StatsSection({ AttendanceDetails, TableVisibility }: { AttendanceDetails: any, TableVisibility: (isVisible: boolean) => void }) {
   const [showTable, setShowTable] = useState(false)
   function ShowsTable() {
-   showTable? setShowTable(false) : setShowTable(true)
-   TableVisibility(showTable)
-   console.log(showTable)
+    showTable ? setShowTable(false) : setShowTable(true)
+    TableVisibility(showTable)
+    console.log(showTable)
   }
 
   return (
