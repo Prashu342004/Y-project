@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IconViewAll } from "./utility/Icon";
 
-export function StatsSection({ AttendenceDetails, TableVisibility }: { AttendenceDetails: any, TableVisibility: (isVisible: boolean) => void }) {
+export function StatsSection({ AttendanceDetails, TableVisibility }: { AttendanceDetails: any, TableVisibility: (isVisible: boolean) => void }) {
   const [showTable, setShowTable] = useState(false)
   function ShowsTable() {
    showTable? setShowTable(false) : setShowTable(true)
@@ -19,7 +19,7 @@ export function StatsSection({ AttendenceDetails, TableVisibility }: { Attendenc
           </div>
           <div className="flex items-center justify-between">
             <div className="text-3xl font-black text-white">
-              {AttendenceDetails?.percentage}<span className="text-xl text-[#f5c84b]">%</span>
+              {AttendanceDetails?.percentage}<span className="text-xl text-[#f5c84b]">%</span>
             </div>
             <span onClick={() => ShowsTable()} className="text-xl text-[#f5c84b] cursor-pointer">
               <IconViewAll className="size-6" />
@@ -34,7 +34,7 @@ export function StatsSection({ AttendenceDetails, TableVisibility }: { Attendenc
             FEE STATUS
           </div>
           <div className="text-xl font-black text-[#f5c84b] mb-1">
-            {`${AttendenceDetails?.fee_status}`}
+            {`${AttendanceDetails?.fee_status}`}
           </div>
           <div className="text-[10px] font-medium text-white/40">
             NEXT: 15 OCT
