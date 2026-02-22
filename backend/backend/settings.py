@@ -5,7 +5,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
-    'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
+    "unfold",'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
     'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles',
     'rest_framework', 'corsheaders', 'api.apps.ApiConfig', 'rest_framework_simplejwt'
 ]
@@ -66,3 +66,9 @@ CSRF_TRUSTED_ORIGINS = [
     "https://youngboys.vercel.app",
     "https://y-project-git-main-shubhs-projects-72744d08.vercel.app",
 ]
+# Admin Panel Styling
+UNFOLD = {
+    "SITE_TITLE": "YBFC ERP",
+    "SITE_HEADER": "YBFC Admin",
+    "SITE_SYMBOL": "sports_soccer",
+}

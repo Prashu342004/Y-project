@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth.hashers import check_password
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
-from .models import Player, Match, Attendance, User
+from .models import Player, Match, User
 
 
 @api_view(["GET", "POST"])
@@ -32,13 +32,7 @@ def home(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def profile(request):
-    p = Player.objects.first()
-    if not p:
-        return Response({"error": "No player"}, status=404)
-    try:
-        a = p.attendance
-    except Attendance.DoesNotExist:
-        a = None
+    p = Player.objects.get(user=request.user)
     return Response(
         {
             "players_detail": {
@@ -46,12 +40,6 @@ def profile(request):
                 "name": p.name,
                 "position": p.position,
                 "jersey_no": p.jersey_no,
-            },
-            "attendence_data": {
-                "percentage": float(a.percentage) if a else 0,
-                "date_of_present": a.date_present if a else [],
-                "date_of_absent": a.date_absent if a else [],
-                "fee_status": a.fee_status if a else "",
             },
             "contact_info": {"mobile_no": p.mobile_no, "email": p.email},
         }
@@ -64,6 +52,7 @@ def login(request):
     password = request.data.get("password")
     try:
         Registered_player = User.objects.get(email=email)
+        print(Registered_player)
         if check_password(password, Registered_player.password):
 
             if not Registered_player.is_active:
@@ -93,6 +82,6 @@ def login(request):
         else:
             return Response({"error": "Invalid email or password"}, status=401)
     except User.DoesNotExist:
-        return Response({"error": "Invalid email or password"}, status=401)
+        return Response({"error": "User not exist"}, status=401)
 
 
