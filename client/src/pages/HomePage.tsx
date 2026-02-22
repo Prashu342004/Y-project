@@ -6,7 +6,7 @@ import { useFetch } from "../lib/fetch";
 
 export function HomePage() {
   const { data, error } = useFetch("",'get');
-  console.log({ data, error });
+  console.log("this is from /home",{ data, error });
   const MatchDetails = data?.upcoming_matches;
 
   
