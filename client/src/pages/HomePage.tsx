@@ -6,7 +6,9 @@ import { useFetch } from "../lib/fetch";
 
 export function HomePage() {
   const { data, error } = useFetch("",'get');
-  console.log("this is from /home",{ data, error });
+  let Player_data = data?.players_detail;
+  console.log(Player_data);
+  
   const MatchDetails = data?.upcoming_matches;
 
   
@@ -16,7 +18,7 @@ export function HomePage() {
       <Hero />
       <ImageCarousel />
       <UpcomingMatch MatchDetails={MatchDetails} />
-      <PlayersSection />
+      <PlayersSection Player_data={Player_data} />
     </div>
   );
 }
