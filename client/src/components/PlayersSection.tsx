@@ -1,38 +1,5 @@
 import { SectionHeading } from "./utility/SectionHeading";
 
-let players = [
-  {
-    id: 1,
-    name: "Player 1",
-    position: "Position 1",
-    number: 1,
-  },
-  {
-    id: 2,
-    name: "Player 2",
-    position: "Position 2",
-    number: 2,
-  },
-  {
-    id: 3,
-    name: "Player 3",
-    position: "Position 3",
-    number: 3,
-  },
-  {
-    id: 4,
-    name: "Player 4",
-    position: "Position 4",
-    number: 4,
-  },
-  {
-    id: 5,
-    name: "Player 5",
-    position: "Position 5",
-    number: 5,
-  },
-]
-
 function PlayerSilhouette() {
   return (
     <svg viewBox="0 0 120 140" className="h-full w-full" aria-hidden="true">
