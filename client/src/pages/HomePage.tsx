@@ -7,8 +7,7 @@ import { useFetch } from "../lib/fetch";
 export function HomePage() {
   const { data, error } = useFetch("",'get');
   let Player_data = data?.players_detail;
-  console.log(Player_data);
-  
+  error? console.log(error): console.log(Player_data);
   const MatchDetails = data?.upcoming_matches;
 
   
