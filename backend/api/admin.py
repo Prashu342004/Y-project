@@ -4,6 +4,8 @@ from .models import Attendance_list
 
 
 from .models import Player, Match, User, Attendance_list
+
+
 admin.site.register(Player, ModelAdmin)
 admin.site.register(Match)
 admin.site.register(User)   

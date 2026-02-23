@@ -14,11 +14,11 @@ def create_user(sender,instance, created, **kwargs):
     # Prevent execution during migrations
     if 'migrate' in sys.argv:
         return
+    
+    if User.objects.filter(email=instance.email):
+        return
 
     generated_password = str(instance.jersey_no) + "@"+ instance.email + "@"+ instance.mobile_no
-
-    print(generated_password)
-    print(type(generated_password))
     if created:
         try:
             User.objects.create(
@@ -26,7 +26,6 @@ def create_user(sender,instance, created, **kwargs):
                 email = instance.email,
                 password = make_password(generated_password)
             )
-            print('user created successfully')
             url = "https://api.brevo.com/v3/smtp/email"
 
             payload = {

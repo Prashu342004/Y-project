@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 
 class Player(models.Model):
     photo = models.URLField(blank=True)
@@ -8,8 +9,13 @@ class Player(models.Model):
     jersey_no = models.IntegerField()
     mobile_no = models.CharField(max_length=15) 
     email = models.EmailField(blank=True)
+
     def __str__(self):
         return self.name
+    
+    def clean(self):
+        if User.objects.filter(email=self.email).exists():
+            raise ValidationError("Email already exists")
 
 class Match(models.Model):
     club_name = models.CharField(max_length=100)
