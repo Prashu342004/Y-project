@@ -6,8 +6,11 @@ import { useFetch } from "../lib/fetch";
 
 export function HomePage() {
   const { data, error } = useFetch("",'get');
+  setInterval(()=>{
+    const responseFromPing = useFetch("/ping",'get');
+    console.log(responseFromPing.data); 
+  },30000)
   let Player_data = data?.players_detail;
-  error? console.log(error): console.log(Player_data);
   const MatchDetails = data?.upcoming_matches;
 
   

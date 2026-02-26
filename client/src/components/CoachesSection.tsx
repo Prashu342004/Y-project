@@ -14,7 +14,7 @@ const coaches: Coach[] = [
         name: "Gautam",
         role: "Head Coach",
         desc: "D License • 2 years at Academy",
-        image: "src\\assets\\gautam.jpeg", // We will likely verify this visual later
+        image: "/assets/gautam.jpeg", 
     }
 ];
 

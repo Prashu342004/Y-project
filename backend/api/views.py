@@ -9,8 +9,6 @@ from .models import Player, Match, User
 
 @api_view(["GET", "POST"])
 def home(request):
-
-    if request.method == "GET":
         print("this is get method on /")
         players = list(
             Player.objects.values(
@@ -85,3 +83,6 @@ def login(request):
         return Response({"error": "User not exist"}, status=401)
 
 
+@api_view(["GET"])
+def ping(request):
+    return Response({"success": True}, status=200)
