@@ -52,6 +52,6 @@ def create_user(sender,instance, created, **kwargs):
 
             response = requests.post(url, json=payload, headers=headers)
 
-            print(response.json())
+            print("Email sent successfully")
         except Exception as e:
             print(e)

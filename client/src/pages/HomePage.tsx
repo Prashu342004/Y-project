@@ -5,7 +5,7 @@ import { UpcomingMatch } from "../components/UpcomingMatch";
 import { useFetch } from "../lib/fetch";
 
 export function HomePage() {
-  const { data, error } = useFetch("",'get');
+  const { data } = useFetch("",'get');
   setInterval(()=>{
     const responseFromPing = useFetch("/ping",'get');
     console.log(responseFromPing.data); 
