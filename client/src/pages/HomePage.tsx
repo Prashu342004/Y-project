@@ -8,7 +8,7 @@ export function HomePage() {
   const { data } = useFetch("",'get');
   setInterval(()=>{
     const responseFromPing = useFetch("/ping",'get');
-    console.log(responseFromPing.data); 
+    console.log(responseFromPing); 
   },30000)
   let Player_data = data?.players_detail;
   const MatchDetails = data?.upcoming_matches;
