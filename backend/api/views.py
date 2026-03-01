@@ -1,4 +1,5 @@
 from rest_framework.response import Response
+from django.http import HttpResponse
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth.hashers import check_password
@@ -64,15 +65,13 @@ def login(request):
             response.set_cookie(
                 key="access_token",
                 value=access,
-                httponly=True,
-                secure=False,  # for localhost, set true for production
+                secure=True,  # for localhost, set true for production
                 samesite="Lax",
             )
             response.set_cookie(
                 key="refresh_token",
                 value=refresh,
-                httponly=True,
-                secure=False,
+                secure=True,
                 samesite="Lax",
             )
             return response
@@ -83,6 +82,6 @@ def login(request):
         return Response({"error": "User not exist"}, status=401)
 
 
-@api_view(["GET"])
 def ping(request):
-    return Response({"success": True}, status=200)
+    return HttpResponse("ping")
+    
