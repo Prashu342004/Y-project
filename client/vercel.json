@@ -1,8 +1,0 @@
-{
-  "crons": [
-    {
-      "path": "/ping.ts",
-      "schedule": "*/1 * * * *"
-    }
-  ]
-}

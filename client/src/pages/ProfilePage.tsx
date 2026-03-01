@@ -7,6 +7,8 @@ import { useState } from "react";
 
 export function ProfilePage() {
   const { data, error } = useFetch('/profile','get');
+  console.log(data);
+  console.log(error);
   
   const PlayerDetails = data?.players_detail;
   const ContactDetails = data?.contact_info;
