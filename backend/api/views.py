@@ -65,14 +65,16 @@ def login(request):
             response.set_cookie(
                 key="access_token",
                 value=access,
+                httponly=True,
                 secure=True,  # for localhost, set true for production
-                samesite="Lax",
+                samesite=None,
             )
             response.set_cookie(
                 key="refresh_token",
                 value=refresh,
+                httponly=True,
                 secure=True,
-                samesite="Lax",
+                samesite=None,
             )
             return response
 
