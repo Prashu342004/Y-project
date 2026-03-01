@@ -31,6 +31,7 @@ def home(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def profile(request):
+    print('this is get method on /profile and req has reached this endpoint')
     p = Player.objects.get(user=request.user)
     return Response(
         {

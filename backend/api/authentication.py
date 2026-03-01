@@ -6,6 +6,7 @@ from rest_framework_simplejwt.settings import api_settings
 class CookieJWTAuthentication(JWTAuthentication):
 
     def authenticate(self, request):
+        print("this is authentication function and req has reached this endpoint")
         header = self.get_header(request)
 
         if header is None:
