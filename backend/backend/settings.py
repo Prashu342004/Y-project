@@ -1,8 +1,12 @@
 from pathlib import Path
+from datetime import timedelta
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dev-key-change-in-production'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
+
+AUTH_USER_MODEL = 'api.User'
 
 INSTALLED_APPS = [
     "unfold",'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
@@ -21,10 +25,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+]
+
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'api.authentication.CookieJWTAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }
 ROOT_URLCONF = 'backend.urls'
@@ -61,15 +68,12 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS config
-CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://youngboys.vercel.app",
-    "https://y-project-git-main-shubhs-projects-72744d08.vercel.app",
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://youngboys.vercel.app",
-    "https://y-project-git-main-shubhs-projects-72744d08.vercel.app",
 ]
 
 # Admin Panel Styling
@@ -77,4 +81,11 @@ UNFOLD = {
     "SITE_TITLE": "YBFC ERP",
     "SITE_HEADER": "YBFC Admin",
     "SITE_SYMBOL": "sports_soccer",
+}
+# SimpleJWT config
+SIMPLE_JWT = {
+    "ALGORITHM": "HS256",
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
+    "SIGNING_KEY": config('SECRET_KEY')
 }

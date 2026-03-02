@@ -1,8 +1,8 @@
+from django.contrib.auth import authenticate
 from rest_framework.response import Response
 from django.http import HttpResponse
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
-from django.contrib.auth.hashers import check_password
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from .models import Player, Match, User
@@ -10,7 +10,6 @@ from .models import Player, Match, User
 
 @api_view(["GET", "POST"])
 def home(request):
-        print("this is get method on /")
         players = list(
             Player.objects.values(
                 "photo",
@@ -31,19 +30,25 @@ def home(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def profile(request):
-    print('this is get method on /profile and req has reached this endpoint')
-    p = Player.objects.get(user=request.user)
-    return Response(
-        {
-            "players_detail": {
-                "photo": p.photo,
-                "name": p.name,
-                "position": p.position,
-                "jersey_no": p.jersey_no,
-            },
-            "contact_info": {"mobile_no": p.mobile_no, "email": p.email},
-        }
-    )
+    print("request permitted")
+    print(request.META.get("HTTP_AUTHORIZATION"))
+    return Response({
+        "user": str(request.user),
+        "authenticated": request.user.is_authenticated
+    })
+    # p = Player.objects.get(user=request.user)
+
+    # return Response(
+    #     { 
+    #         "players_detail": {
+    #             "photo": p.photo,
+    #             "name": p.name,
+    #             "position": p.position,
+    #             "jersey_no": p.jersey_no,
+    #         },
+    #         "contact_info": {"mobile_no": p.mobile_no, "email": p.email},
+    #     }
+    # )
 
 
 @api_view(["POST"])  # checks email and password are in DB
@@ -51,38 +56,22 @@ def login(request):
     email = request.data.get("email")
     password = request.data.get("password")
     try:
-        Registered_player = User.objects.get(email=email)
-        print(Registered_player)
-        if check_password(password, Registered_player.password):
-
-            if not Registered_player.is_active:
-                raise AuthenticationFailed("User is not active")
-
-            refresh = RefreshToken.for_user(Registered_player)
-            access = str(refresh.access_token)
-            refresh = str(refresh)
-
-            response = Response({"success": True}, status=200)
-            response.set_cookie(
-                key="access_token",
-                value=access,
-                httponly=True,
-                secure=True,  # for localhost, set true for production
-                samesite=None,
-            )
-            response.set_cookie(
-                key="refresh_token",
-                value=refresh,
-                httponly=True,
-                secure=True,
-                samesite=None,
-            )
-            return response
-
-        else:
+        user = authenticate(email=email, password=password)
+        if user is None:
             return Response({"error": "Invalid email or password"}, status=401)
+     
+        refresh = RefreshToken.for_user(user)
+        access = str(refresh.access_token)
+        refresh = str(refresh)
+          
+        return Response({
+                "refresh": refresh,
+                "access": access,
+                "success": True,
+            })
+
     except User.DoesNotExist:
-        return Response({"error": "User not exist"}, status=401)
+        return Response({"error": "User not exist"}, status=404)
 
 
 def ping(request):

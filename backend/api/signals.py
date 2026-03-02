@@ -19,16 +19,17 @@ def create_user(sender,instance, created, **kwargs):
         return
 
     generated_password = str(instance.jersey_no) + "@"+ instance.email + "@"+ instance.mobile_no
-    if created:
-        try:
-            User.objects.create(
-                player = instance,
-                email = instance.email,
-                password = make_password(generated_password)
-            )
-            url = "https://api.brevo.com/v3/smtp/email"
 
-            payload = {
+    try:
+        user = User.objects.create(
+            player = instance,
+            email = instance.email,
+        )
+        user.set_password(generated_password)
+        user.save()
+        url = "https://api.brevo.com/v3/smtp/email"
+
+        payload = {
                 "htmlContent": "<html><head></head><body>Your Password for ERP is {{params.password}}</p></body></html>",
                 "params": {
                     "password": generated_password,
@@ -45,13 +46,13 @@ def create_user(sender,instance, created, **kwargs):
                     } 
                 ]
             }
-            headers = {
+        headers = {
                 "api-key": config('BREVO_API_KEY'),
                 "Content-Type": "application/json"
             }
 
-            response = requests.post(url, json=payload, headers=headers)
+        response = requests.post(url, json=payload, headers=headers)
 
-            print("Email sent successfully")
-        except Exception as e:
-            print(e)
+        print  ("Email sent successfully")
+    except Exception as e:
+        print(e)

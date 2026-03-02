@@ -15,11 +15,16 @@ export function LoginPage() {
     e.preventDefault();
     setError(false);
     
-    api.post("/auth/login", { email, password })
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+
+
+    api.post("/auth/login/", { email, password })
     .then((res) => {
-      console.log("Login response:", res.data);
       if (res.data.success) {
-        navigate("/profile");
+        localStorage.setItem("access", res.data.access);
+        localStorage.setItem("refresh", res.data.refresh);
+        navigate("/profile/");
       } else {
         setError(true);
       }

@@ -6,9 +6,9 @@ import { AttendanceTable } from "../components/AttendanceTable";
 import { useState } from "react";
 
 export function ProfilePage() {
-  const { data, error } = useFetch('/profile','get');
-  console.log(data);
-  console.log(error);
+  const { data, error } = useFetch('/profile/','get');
+
+  console.log(error, data);
   
   const PlayerDetails = data?.players_detail;
   const ContactDetails = data?.contact_info;
